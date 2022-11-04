@@ -128,13 +128,13 @@ header label {
 .inicio {
   position: relative;
   margin: auto;
-  padding-top: 70px;
 }
 .inicio img {
   width: 100%;
   height: calc(100vh - 74px);
   opacity: 0.8;
   box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.7);
+  margin-top: 70px;
 }
 .inicio .texto_img {
   position: absolute;
@@ -157,9 +157,7 @@ PÁGINA DE ACERCA
 .acerca {
   text-align: center;
   padding: 5rem 1rem;
-  background: url(../images/fondo_sub.png) no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-color: var(--verde);
   z-index: 10;
 }
 
@@ -348,7 +346,7 @@ GRAFICOS
   width: 26rem;
 	background: linear-gradient(transparent 50%, white 50%);
 	border-radius: 50%;
-	padding-top: 1.5rem;
+	padding-top: 1.8rem;
 	position: absolute;
 	top: -.6rem;
 	right: -.6rem;
@@ -409,4 +407,95 @@ GRAFICOS
 
 .fireworks::after {
 	content: "85%";
+}
+
+/* ================
+PÁGINA DE CONTACTO
+================= */
+.contactos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 4rem;
+  margin: auto;
+  width: 70%;
+/*   background: url(../images/manos_saludo.png) no-repeat;
+  background-size: contain;
+  background-position: top;
+ */}
+
+.contactos .image_form {
+  position: absolute;
+  width: 52%;
+}
+
+.contactos .image_form img {
+  width: 100%;
+  opacity: 0.4;
+}
+
+.contactos .image img {
+  width: 100%;
+  padding: 2rem;
+}
+
+.contactos form {
+  position: relative;
+  flex: 1 1 40rem;
+  padding: 3rem 3rem 9rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1rem 2rem rgb(0 0 0 / 30%);
+  border-radius: 5%;
+}
+
+.posicion_btn {
+  position: absolute;
+  right: 30px;
+}
+
+.contactos .heading {
+  text-align: center;
+  padding: 0;
+  padding-bottom: 2rem;
+  color: var(--verde);
+}
+
+.contactos form .inputcaja {
+  position: relative;
+}
+
+.contactos form .inputcaja input,
+.contactos form .inputcaja textarea {
+  width: 100%;
+  background: none;
+  color: #333;
+  margin: 1.5rem 0;
+  padding: 0.5rem 0;
+  font-size: 1.7rem;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+  text-transform: none;
+}
+
+.contactos form .inputcaja textarea {
+  resize: none;
+  height: 13rem;
+}
+
+.contactos form .inputcaja label {
+  position: absolute;
+  top: 1.7rem;
+  left: 0;
+  font-size: 1.7rem;
+  color: var(--verde);
+  transition: 0.2s linear;
+}
+
+.contactos form .inputcaja input:focus ~ label,
+.contactos form .inputcaja input:valid ~ label,
+.contactos form .inputcaja textarea:focus ~ label,
+.contactos form .inputcaja textarea:valid ~ label {
+  top: -0.5rem;
+  font-size: 1.5rem;
+  color: var(--limon);
 }

@@ -101,9 +101,14 @@
     background-position: right;
   }
 
-  .suscribete p {
-    width: auto;
-  } 
+  .contactos {
+    width: 100%;
+  }
+
+  .contactos .image_form {
+    width: 82%;
+  }
+
 }
 
 @media (max-width: 450px) {
