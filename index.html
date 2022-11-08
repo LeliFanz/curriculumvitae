@@ -35,12 +35,9 @@
 <!--  HEADER - FIN  -->
 
 <!--  INICIO  -->
-  <div class="inicio" id="inicio">
-    <img src="images/fondo.jpg" alt="">
-    <div class="texto_img">
-      <p>Codificando...</p>
-    </div>
-  </div>
+  <section>
+    <div id="inicio"></div>
+  </section>
 <!--  INICIO  -  FIN  -->
 
 <!--  PÁGINA DE ACERCA  -->
@@ -120,29 +117,37 @@
 
     <!--  PÁGINA DE CONTACTOS  -->
     <section class="contactos" id="contacto">
-      <div class="image_form"><img src="images/manos_saludo.png" alt=""></div>
-      <form action="">
+      <form name="contacto" action="">
         <h1 class="heading">contacto</h1>
         <div class="inputcaja">
-          <input type="text" required />
-          <label for="">nombre</label>
+          <input class="inputVarios" id="nombre" value="" type="text"
+          minlength="5" maxlength="30"/>
+          <label for="nombre">nombre</label>
         </div>
         <div class="inputcaja">
-          <input type="text" required />
-          <label for="">email</label>
+          <input class="inputVarios" id="email" type="text" minlength="8" maxlength="30"/>
+          <label for="email">email</label>
         </div>
         <div class="inputcaja">
-          <input type="text" required />
-          <label for="">telefono</label>
+          <input class="inputVarios" id="telefono" type="text" minlength="8" maxlength="15"/>
+          <label for="telefono">telefono</label>
+        </div>
+        <div class="selectcaja">
+          <select name="pais" id="pais">
+          <!-- Hay que terminar los options -->
+          <!-- Eliminado de value la llamada a la función, si eso funciona lo desconocía, y aunque lo haga es totalmente innecesario, lo correcto es usar el evento onchange -->
+            <option value="">Seleccione un País...</option>
+          </select>
         </div>
         <div class="inputcaja">
-          <textarea name="" id="" cols="30" rows="10"></textarea>
-          <label for="">mensaje</label>
+          <textarea class="inputVarios" name="mensaje" id="mensaje" cols="30" rows="10" maxlength="2000" ></textarea>
+          <label for="mensaje">mensaje</label>
         </div>
-        <input class="btn posicion_btn" type="submit" value="enviar" />
+        <input class="btn posicion_btn" type="submit" value="enviar" id="enviar"/>
       </form>
     </section>
     <!--  PÁGINA DE CONTACTOS - FIN  -->
 
-</body>
+    <script src="js/form_contacto.js"></script>
+  </body>
 </html>

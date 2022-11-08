@@ -15,9 +15,6 @@
   .section {
     padding: 7.5rem 0rem 2rem 3%; 
   }
-  .inicio img {
-  height: 80vh;
-  }
 
 }
 
@@ -59,20 +56,12 @@
 
   input:checked ~ .navbar {
     transform: scaleY(1);
+    transition: transform .5s;
     opacity: 1;
   }
 
   input:checked ~ label::before {
     content: "\f00d";
-  }
-
-  .inicio {
-    padding: 0;
-  }
-
-  .inicio img {
-    width: 100%;
-    height: auto;
   }
 
   .image img {
@@ -103,10 +92,7 @@
 
   .contactos {
     width: 100%;
-  }
-
-  .contactos .image_form {
-    width: 82%;
+    padding: 1rem;
   }
 
 }
