@@ -63,6 +63,20 @@ section {
   transform: scale(1.1);
 }
 
+.whatsApp {
+  position: fixed;
+  z-index: 100;
+  bottom: 5vh;
+  right: 1vh;
+  object-fit: cover;
+  cursor: pointer;
+  transform: scalex(1);
+  transition: transform .5s;
+}
+.whatsApp img{
+  width: 5rem;
+  height: 5rem;
+}
 /* ===========
 NAVEGACIÓN MENÚ
 ============== */
@@ -423,10 +437,7 @@ PÁGINA DE CONTACTO
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding-bottom: 4rem;
   margin: auto;
-  width: 70%;
-  max-width: 700px;
 }
 
 .contactos form {
@@ -436,6 +447,8 @@ PÁGINA DE CONTACTO
   border: 0.1rem solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 1rem 2rem rgb(0 0 0 / 30%);
   border-radius: 25px;
+  width: 70%;
+  max-width: 700px;
 }
 
 .contactos form::before {
@@ -455,6 +468,9 @@ PÁGINA DE CONTACTO
   right: 30px;
 }
 
+.contactos h1 {
+  height: 50px;
+}
 .contactos .heading {
   text-align: center;
   padding: 0;

@@ -290,6 +290,23 @@ $btnEnviar.addEventListener("click", (e) => {
   }
 });
 
+// ====== COMIENZA EL TIPEO DE CONTACTO ======
+let contactoType = document.querySelector(".contactos h1");
+
+window.addEventListener("scroll", () => {
+  let altura = innerHeight / 1.3;
+  let distancia = contactoType.getBoundingClientRect().top;
+  if (distancia < altura) {
+    contactoType.classList.add("heading");
+    contactoType.textContent="contacto";
+  }
+  else {
+    contactoType.classList.remove("heading");
+    contactoType.textContent="";
+  }
+})
+// ====== COMIENZA EL TIPEO DE CONTACTO == FIN ===
+
 // ESCONDER HEADER UNA VEZ SELECCIONADO ========
 let aHeader = document.querySelector(".navbar");
 let input = document.querySelector("#menu-bar");
