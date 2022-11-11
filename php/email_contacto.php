@@ -1,10 +1,10 @@
 <?php
 if(isset($_POST['email'])) {
 
-$first_name= ucwords ($_POST['$nombre']);
-$mail= strtolower ($_POST['$email']);
-$phone= $_POST['$telefono'];
-$comment= ucwords ($_POST['$mensaje']);
+$first_name= ucwords ($_POST['first_name']);
+$mail= strtolower ($_POST['mail']);
+$phone= $_POST['phone'];
+$comment= ucwords ($_POST['comment']);
 
 $domain = $_SERVER["HTTP_HOST"]; 
 $email_origen  = "" .$mail. ""; 
