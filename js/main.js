@@ -1,3 +1,17 @@
+// VALIDANDO EL FORMULARIO
+let $div = document.querySelector(".contactos");
+let $divVarios = document.querySelectorAll(".inputcaja");
+let $inputVarios = document.querySelectorAll(".inputVarios");
+let $divPais = document.querySelector(".selectcaja");
+let $selectPais = document.querySelector(".selectcaja select");
+// ENVIANDO EMAIL
+let $nombre = document.getElementById("nombre");
+let $email = document.getElementById("email");
+let $telefono = document.getElementById("telefono");
+let $pais = document.getElementById("pais");
+let $mensaje = document.getElementById("mensaje");
+let $btnEnviar = document.getElementById("enviar");
+
 function cargarPais() {
   var array = [
     "Afganistan",
@@ -199,15 +213,17 @@ function cargarPais() {
   array.sort();
   addOptions("pais", array);
 }
+// Iniciar la carga de pais solo para comprobar que funciona
+cargarPais();
 
 //Función para agregar opciones a un <select>.
 function addOptions(domElement, array) {
   var selector = document.getElementsByName(domElement)[0];
-  for (pais in array) {
+  for ($pais in array) {
     var opcion = document.createElement("option");
-    opcion.text = array[pais];
+    opcion.text = array[$pais];
     // Añadimos un value a los option para hacer mas facil escoger los pueblos
-    opcion.value = array[pais].toLowerCase();
+    opcion.value = array[$pais].toLowerCase();
     selector.add(opcion);
   }
 }
@@ -244,17 +260,6 @@ function addOptions(domElement, array) {
   }
 }
  */
-// Iniciar la carga de pais solo para comprobar que funciona
-cargarPais();
-var pais = document.getElementById("pais");
-let $btnEnviar = document.getElementById("enviar");
-
-// VALIDANDO EL FORMULARIO
-let $inputVarios = document.querySelectorAll(".inputVarios");
-let $divVarios = document.querySelectorAll(".inputcaja");
-let $div = document.querySelector(".contactos");
-let $selectPais = document.querySelector(".selectcaja select");
-let $divPais = document.querySelector(".selectcaja");
 
 /* function showError(inputVarios, show = true) {
   if (show) {
@@ -285,9 +290,20 @@ function selectPaisValidar() {
 $btnEnviar.addEventListener("click", (e) => {
   e.preventDefault();
   selectPaisValidar();
+  $btnEnviar.value = "enviado";
+  $btnEnviar.disabled = true;
   for (let i = 0; i < $divVarios.length; i++) {
     validar($inputVarios[i], $divVarios[i]);
   }
+  let xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "php/email_contacto.php", true);
+  xhttp.onreadystatechange = function () {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      console.log("Mensaje enviado");
+    } else {
+      console.log("El mensaje fue truncado cabron");
+    }
+  };
 });
 
 // ====== COMIENZA EL TIPEO DE CONTACTO ======
@@ -298,19 +314,17 @@ window.addEventListener("scroll", () => {
   let distancia = contactoType.getBoundingClientRect().top;
   if (distancia < altura) {
     contactoType.classList.add("heading");
-    contactoType.textContent="contacto";
-  }
-  else {
+    contactoType.textContent = "contacto";
+  } else {
     contactoType.classList.remove("heading");
-    contactoType.textContent="";
+    contactoType.textContent = "";
   }
-})
+});
 // ====== COMIENZA EL TIPEO DE CONTACTO == FIN ===
 
 // ESCONDER HEADER UNA VEZ SELECCIONADO ========
-let aHeader = document.querySelector(".navbar");
 let input = document.querySelector("#menu-bar");
-aHeader.addEventListener("click", (e) => {
+document.querySelector(".navbar").addEventListener("click", () => {
   input.checked = false;
 });
 // ESCONDER HEADER UNA VEZ SELECCIONADO == FIN ==
