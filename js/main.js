@@ -12,6 +12,19 @@ let $pais = document.getElementById("pais");
 let $mensaje = document.getElementById("mensaje");
 let $btnEnviar = document.getElementById("enviar");
 
+//ACCIONANDO BOTON FORMULARIO
+$btnEnviar.addEventListener("click", (e) => {
+  e.preventDefault();
+  selectPaisValidar();
+  $btnEnviar.value = "enviado";
+  //$btnEnviar.disabled = true;
+  for (let i = 0; i < $divVarios.length; i++) {
+    validar($inputVarios[i], $divVarios[i]);
+  }
+  console.log($nombre.value, $email.value, $telefono.value, $mensaje.value);
+  loadContact();
+});
+
 function cargarPais() {
   var array = [
     "Afganistan",
@@ -218,12 +231,13 @@ cargarPais();
 
 //Función para agregar opciones a un <select>.
 function addOptions(domElement, array) {
-  var selector = document.getElementsByName(domElement)[0];
-  for ($pais in array) {
+  let pais = document.getElementById("pais");
+  let selector = document.getElementsByName(domElement)[0];
+  for (pais in array) {
     var opcion = document.createElement("option");
-    opcion.text = array[$pais];
+    opcion.text = array[pais];
     // Añadimos un value a los option para hacer mas facil escoger los pueblos
-    opcion.value = array[$pais].toLowerCase();
+    opcion.value = array[pais].toLowerCase();
     selector.add(opcion);
   }
 }
@@ -286,25 +300,35 @@ function selectPaisValidar() {
   }
 }
 
-//ACCIONANDO BOTON FORMULARIO
-$btnEnviar.addEventListener("click", (e) => {
-  e.preventDefault();
-  selectPaisValidar();
-  $btnEnviar.value = "enviado";
-  $btnEnviar.disabled = true;
-  for (let i = 0; i < $divVarios.length; i++) {
-    validar($inputVarios[i], $divVarios[i]);
-  }
-  let xhttp = new XMLHttpRequest();
+// ============== ENVIANDO EMAIL ===========
+function loadContact() {
+  var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "php/email_contacto.php", true);
   xhttp.onreadystatechange = function () {
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
-      console.log("Mensaje enviado");
-    } else {
-      console.log("El mensaje fue truncado cabron");
-    }
+      if (xhttp.readyState == 4 && xhttp.status == 200) { console.log("Todo perfecto")
+/*         $("#exito_cont").show();
+        $("#error_cont").hide();
+        $("#validate_error").hide();
+ */      } else { console.log("Nose donde esta la cagada")
+/*         $("#exito_cont").hide();
+        $("#error_cont").show();
+        $("#validate_error").hide();
+ */      }
   };
-});
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(
+    "first_name=" +
+      $nombre +
+      "&mail=" +
+      $email +
+      "&phone=" +
+      $telefono +
+      "&comment=" +
+      $mensaje +
+      ""
+  );
+}
+// ============== ENVIANDO EMAIL ===== FIN =====
 
 // ====== COMIENZA EL TIPEO DE CONTACTO ======
 let contactoType = document.querySelector(".contactos h1");
