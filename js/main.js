@@ -16,13 +16,11 @@ let $btnEnviar = document.getElementById("enviar");
 $btnEnviar.addEventListener("click", (e) => {
   e.preventDefault();
   selectPaisValidar();
-  $btnEnviar.value = "enviado";
-  //$btnEnviar.disabled = true;
   for (let i = 0; i < $divVarios.length; i++) {
     validar($inputVarios[i], $divVarios[i]);
   }
-  console.log($nombre.value, $email.value, $telefono.value, $mensaje.value);
-  loadContact();
+    console.log("Joya")
+    loadContact();
 });
 
 function cargarPais() {
@@ -305,11 +303,15 @@ function loadContact() {
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "php/email_contacto.php", true);
   xhttp.onreadystatechange = function () {
-      if (xhttp.readyState == 4 && xhttp.status == 200) { console.log("Todo perfecto")
+      if (xhttp.readyState == 4 && xhttp.status == 200) { 
+//        $btnEnviar.value = "Enviado";
+//        $btnEnviar.disabled = true;
+
 /*         $("#exito_cont").show();
         $("#error_cont").hide();
         $("#validate_error").hide();
- */      } else { console.log("Nose donde esta la cagada")
+ */      } else {
+          $btnEnviar.value = "Enviar de nuevo";
 /*         $("#exito_cont").hide();
         $("#error_cont").show();
         $("#validate_error").hide();
