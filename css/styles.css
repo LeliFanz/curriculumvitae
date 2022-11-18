@@ -463,11 +463,6 @@ PÁGINA DE CONTACTO
   place-items: center;
 }
 
-.posicion_btn {
-  position: absolute;
-  right: 30px;
-}
-
 .contactos h1 {
   height: 50px;
 }
@@ -550,22 +545,21 @@ Animacion escribiendo a maquina - FIN
   background-color: whitesmoke;
 }
 
-.validar input{
-  border-bottom: 0.1rem solid red !important;
+.contactos form .botones {
+  margin-top: 1rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
-.validar label, .validar select{
-  color: red !important;
-  top: -0.5rem !important;
-  font-size: 1.5rem !important;
+.repuesta_error{
+  font-size: 1.5rem;
+  color: red;
 }
 
-.validate label, .validate select{
-  top: -0.5rem !important;
-  font-size: 1.5rem !important;
-  color: var(--limon) !important;
-}
-
-.validate input {
-  background: none;
+.repuesta_ok{
+  font-size: 1.5rem;
+  color: var(--limon);
 }

@@ -1,28 +1,3 @@
-// VALIDANDO EL FORMULARIO
-let $div = document.querySelector(".contactos");
-let $divVarios = document.querySelectorAll(".inputcaja");
-let $inputVarios = document.querySelectorAll(".inputVarios");
-let $divPais = document.querySelector(".selectcaja");
-let $selectPais = document.querySelector(".selectcaja select");
-// ENVIANDO EMAIL
-let $nombre = document.getElementById("nombre");
-let $email = document.getElementById("email");
-let $telefono = document.getElementById("telefono");
-let $pais = document.getElementById("pais");
-let $mensaje = document.getElementById("mensaje");
-let $btnEnviar = document.getElementById("enviar");
-
-//ACCIONANDO BOTON FORMULARIO
-$btnEnviar.addEventListener("click", (e) => {
-  e.preventDefault();
-  selectPaisValidar();
-  for (let i = 0; i < $divVarios.length; i++) {
-    validar($inputVarios[i], $divVarios[i]);
-  }
-    console.log("Joya")
-    loadContact();
-});
-
 function cargarPais() {
   var array = [
     "Afganistan",
@@ -240,70 +215,14 @@ function addOptions(domElement, array) {
   }
 }
 
-/* function cargarPueblos() {
-  // Objeto de pais con pueblos
-  var listaPueblos = {
-    cantabria: ["Laredo", "Gama", "Solares", "Castillo", "Santander"],
-    asturias: ["Langreo", "Villaviciosa", "Oviedo", "Gijon", "Covadonga"],
-    galicia: ["Tui", "Cambados", "Redondella", "Porriño", "Ogrove"],
-    andalucia: ["Dos Hermanas", "Écija", "Algeciras", "Marbella", "Sevilla"],
-    extremadura: ["Caceres", "Badajoz", "Plasencia", "Zafra", "Merida"],
-  };
-
-  var pais = document.getElementById("pais");
-  var pueblos = document.getElementById("pueblo");
-  var paisSeleccionado = pais.value;
-
-  // Se limpian los pueblos
-  pueblos.innerHTML = '<option value="">Seleccione un Pueblo...</option>';
-
-  if (paisSeleccionado !== "") {
-    // Se seleccionan los pueblos y se ordenan
-    paisSeleccionado = listaPueblos[paisSeleccionado];
-    paisSeleccionado.sort();
-
-    // Insertamos los pueblos
-    paisSeleccionado.forEach(function (pueblo) {
-      let opcion = document.createElement("option");
-      opcion.value = pueblo;
-      opcion.text = pueblo;
-      pueblos.add(opcion);
-    });
-  }
-}
- */
-
-/* function showError(inputVarios, show = true) {
-  if (show) {
-    inputVarios.style.borderColor = "red";
-  } else {
-    inputVarios.style.borderBottom = "0.1rem solid rgba(0, 0, 0, 0.1)";
-  }
-}
-*/
-function validar(inputVarios, divVarios) {
-  if (inputVarios.value.length < 5) {
-    divVarios.classList.add("validar");
-  } else {
-    divVarios.classList.remove("validar");
-    divVarios.classList.add("validate");
-  }
-}
-
-function selectPaisValidar() {
-  if ($selectPais.value == "") {
-    $divPais.classList.add("validar");
-  } else {
-    $divPais.classList.remove("validar");
-  }
-}
-
 // ============== ENVIANDO EMAIL ===========
 function loadContact() {
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "php/email_contacto.php", true);
   xhttp.onreadystatechange = function () {
       if (xhttp.readyState == 4 && xhttp.status == 200) { 
+        $respuesta.textContent = "Tu mensaje se envío correctamente";
+        $respuesta.classList.add("repuesta_ok");
 //        $btnEnviar.value = "Enviado";
 //        $btnEnviar.disabled = true;
 
@@ -311,7 +230,8 @@ function loadContact() {
         $("#error_cont").hide();
         $("#validate_error").hide();
  */      } else {
-          $btnEnviar.value = "Enviar de nuevo";
+        $respuesta.textContent = "No se pudo enviar el mensaje, intentalo nuevamente";
+        $respuesta.classList.add("repuesta_error");
 /*         $("#exito_cont").hide();
         $("#error_cont").show();
         $("#validate_error").hide();
@@ -341,6 +261,7 @@ window.addEventListener("scroll", () => {
   if (distancia < altura) {
     contactoType.classList.add("heading");
     contactoType.textContent = "contacto";
+    focus();
   } else {
     contactoType.classList.remove("heading");
     contactoType.textContent = "";
