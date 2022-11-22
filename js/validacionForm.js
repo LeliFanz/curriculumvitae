@@ -35,7 +35,7 @@ function validarCampo(e) {
   //  e.preventDefault();
   //  validar(inputVarios, divVarios);
   if (expresiones[campo].test(e.target.value)) {
-    e.target.style.borderBottom = "0.1rem solid green";
+    e.target.style.borderBottom = "0.1rem solid #0c443a";
     $divVarios[campo].style.color = "var(--limon)";
     $divVarios[campo].style.top = "-0.5rem";
     $inputVarios[parseInt(campo)].disabled = true;
@@ -67,7 +67,7 @@ $pais.addEventListener("click", () => {
 $pais.addEventListener("blur", (e) => {
   if (e.target.value != "") {
     $selectPais.style.color = "#333";
-    e.target.style.borderBottom = "0.1rem solid green";
+    e.target.style.borderBottom = "0.1rem solid #0c443a";
     $inputVarios[3].disabled = false;
   } else {
     $selectPais.style.color = "red";
@@ -79,7 +79,7 @@ $mensaje.addEventListener("blur", (e) => {
     e.target.value.length >= 10 &&
     e.target.value.length <= expresiones.mensaje
   ) {
-    e.target.style.borderBottom = "0.1rem solid green";
+    e.target.style.borderBottom = "0.1rem solid #0c443a";
     $divVarios[3].style.color = "var(--limon)";
     $divVarios[3].style.top = "-0.5rem";
     val++;
@@ -98,5 +98,10 @@ $btnEnviar.addEventListener("click", (el) => {
 $btnReset.addEventListener("click", () => {
   document.forms[0].elements[0].disabled = false;
   document.forms[0].elements[0].focus();
+  $divVarios[0].style.color = "var(--verde)";
+  $divVarios[0].style.fontSize = "1.7rem";
+  $divVarios[0].style.margin = "1.5rem 0";
+  $divVarios[0].style.padding = "0.5rem 0";
+  $inputVarios[0].style.borderBottom = "0.1rem solid rgba(0, 0, 0, 0.1)";
 });
 

@@ -218,7 +218,7 @@ function addOptions(domElement, array) {
 // ============== ENVIANDO EMAIL ===========
 function loadContact() {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "php/email_contacto.php", true);
+  xhttp.open("POST", "http://lelifanz.epizy.com/php/email_contacto.php", true);
   xhttp.onreadystatechange = function () {
       if (xhttp.readyState == 4 && xhttp.status == 200) { 
         $respuesta.textContent = "Tu mensaje se envío correctamente";
@@ -240,11 +240,11 @@ function loadContact() {
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send(
     "first_name=" +
-      $nombre +
+      $0 +
       "&mail=" +
-      $email +
+      $1 +
       "&phone=" +
-      $telefono +
+      $2 +
       "&comment=" +
       $mensaje +
       ""
